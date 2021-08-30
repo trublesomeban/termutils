@@ -1,4 +1,4 @@
-use crossterm::terminal::{disable_raw_mode, enable_raw_mode, ClearType::All};
+use crossterm::terminal::{disable_raw_mode, enable_raw_mode};
 use std::{error, fmt};
 
 #[macro_export]
