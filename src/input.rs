@@ -78,9 +78,10 @@ pub fn read_key() -> Result<Key, Box<dyn error::Error>> {
         digit @ 48..=58 => Key::Number(digit - 48),
         char @ 65..=90 => Key::Letter(char as char),
         char @ 97..=122 => Key::Letter(char as char),
+        13 => Key::Enter,
+        16 => read_key()?,
         17 => Key::Control,
         27 => Key::Escape,
-        13 => Key::Enter,
         186 => Key::Colon,
         _ => Key::None,
     } {
