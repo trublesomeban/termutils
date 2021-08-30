@@ -41,6 +41,7 @@ pub enum Key {
     Right,
     Number(u8),
     Letter(char),
+    Colon,
     Control,
     Escape,
     Enter,
@@ -53,10 +54,11 @@ impl fmt::Display for Key {
             f,
             "{}",
             match self {
-                Key::Control => String::from(""),
                 Key::None => String::from("None"),
                 Key::Enter => String::from("⬅"),
                 Key::Escape => String::from("⤴"),
+                Key::Control => String::from(""),
+                Key::Colon => String::from(":"),
                 Key::Up => String::from("∧"),
                 Key::Down => String::from("∨"),
                 Key::Left => String::from("<"),
@@ -79,6 +81,7 @@ pub fn read_key() -> Result<Key, Box<dyn error::Error>> {
         17 => Key::Control,
         27 => Key::Escape,
         13 => Key::Enter,
+        186 => Key::Colon,
         _ => Key::None,
     } {
         Key::Escape => read_arrow(),
